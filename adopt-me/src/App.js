@@ -3,7 +3,7 @@ const Pet = (props) => {
         React.createElement("h1", {}, props.name),
         React.createElement("h2", {}, props.animal),
         React.createElement("h2", {}, props.breed)
-    ]);        
+    ]);
 }
 
 const App = () => {
@@ -12,9 +12,9 @@ const App = () => {
         {},
         [
             React.createElement("h1", {}, "Adopt Me!"),
-            React.createElement(Pet, {name: "Luna", animal: "Dog", breed: "Havanese"}),
-            React.createElement(Pet, {name: "Nico", animal: "Dog", breed: "Pekingese"}),
-            React.createElement(Pet, {name: "Roscoe", animal: "Dog", breed: "Retriever"}),
+            React.createElement(Pet, { name: "Luna", animal: "Dog", breed: "Havanese" }),
+            React.createElement(Pet, { name: "Nico", animal: "Dog", breed: "Pekingese" }),
+            React.createElement(Pet, { name: "Roscoe", animal: "Dog", breed: "Retriever" }),
         ]
     );
 }
