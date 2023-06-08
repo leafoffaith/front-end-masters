@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+# Must ignore .DS_Store file as it tracks the folder's metadata
+.DS_Store
+coverage/
+.vscode/
+```
