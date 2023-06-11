@@ -5,4 +5,8 @@ const Details = () => {
   return <h2>{id}</h2>;
 };
 
+function getDetails(){
+  
+}
+
 export default Details;
