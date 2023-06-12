@@ -7,7 +7,6 @@ import SearchParams from "./SearchParams";
 import Details from "./Details";
 
 //limit useEffect in React <= secret to good react code
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

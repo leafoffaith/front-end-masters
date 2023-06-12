@@ -1,20 +1,48 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-const localCache = {};
+
+import fetchBreedList from "./fetchBreedList";
+// const localCache = {};
 
 //gonna take in animal
 
 export default function useBreedList(animal) {
-    const [breedList, setBreedList] = useState([]);
-    const [status, setStatus] = useState("unloaded");
 
-    //same as componentDidMount and componentDidUpdate
-    //this effect changes whenever animal changes
+
+    const results = useQuery(["breeds", animal], fetchBreedList);
+
+
+    //question marks check if results is null or undefined else just give empty array
+    return [results?.data?.breeds ?? [], results.status];
+}
+
+//==============================================================================================================================================//
+
+/*
+    @DEPRECATED replaced with useQuery above
+
+        const [breedList, setBreedList] = useState([]);
+        const [status, setStatus] = useState("unloaded");
+
+    same as componentDidMount and componentDidUpdate
+    this effect changes whenever animal changes
     useEffect(() => {
         if (!animal) {
             //if no breed, set to empty array
             setBreedList([]);
-        } else if (localCache[animal]) {
+        } elseconst fetchPet = async ({ queryKey }) => {
+            const id = queryKey[1];
+            const apiRes = await fetch(`http://pets-v2.dev-apis.com/pets?id=${id}`);
+
+            if (!apiRes.ok) {
+                throw new Error(`details/${id} fetch not ok`);
+            }
+
+            return apiRes.json();
+        };
+
+        export default fetchPet; if (localCache[animal]) {
             //if animal is in localCache, set to localCache
             setBreedList(localCache[animal]);
         } else {
@@ -36,5 +64,4 @@ export default function useBreedList(animal) {
         }
     }, [animal]);
 
-    return [breedList, status];
-}
+*/
