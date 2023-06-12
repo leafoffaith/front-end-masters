@@ -1,5 +1,4 @@
-# front-end-masters
-Projects created as part of Frontend Masters.
+#Projects created as part of Frontend Masters.
 https://frontendmasters.com/
 
 List of Projects
