@@ -1,4 +1,4 @@
-const fetchPet = async ({ queryKey }) => {
+const fetchBreedList = async ({ queryKey }) => {
 
     //the 1 is the index of the id in the queryKey array
     //check details.jsx for more info
