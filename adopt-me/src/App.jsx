@@ -6,6 +6,8 @@ import Pet from "./Pet";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 
+//test
+
 //limit useEffect in React <= secret to good react code
 const queryClient = new QueryClient({
   defaultOptions: {
