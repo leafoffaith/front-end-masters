@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+import AdoptedPetContext from "./AdoptedPetContext";
 import Carousel from "./Carousel";
 import fetchPet from "./fetchPets";
 import ErrorBoundary from "./ErrorBoundary";
@@ -9,6 +10,10 @@ import Modal from "./Modal";
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
+  //programmatically reroute someone somewhere
+  const navigate = useNavigate();
+  //underscore means that you don't care about what this is
+  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
   const { id } = useParams();
   //checks if you have details[id] in cache if not it will fetch it
   const results = useQuery(["details", id], fetchPet);
@@ -38,7 +43,16 @@ const Details = () => {
             <div>
               <h1>Would you like to adopt {pet.name}</h1>
               <div className="buttons">
-                <button>Yes</button>
+                <button
+                  onClick={() => {
+                    //telling context that you are setting the adopted pet and
+                    //now that it is done you navigate back to '/' route
+                    setAdoptedPet(pet);
+                    navigate("/");
+                  }}
+                >
+                  Yes
+                </button>
                 <button onClick={() => setShowModal(false)}>No</button>
               </div>
             </div>
